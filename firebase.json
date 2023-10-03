@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "ask-me",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

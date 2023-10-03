@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ask-me-1b00c": {
+      "hosting": {
+        "ask-me": [
+          "ask-me-1b00c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ask-me-1b00c"
+  }
+}
