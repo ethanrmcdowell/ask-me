@@ -1,0 +1,33 @@
+mat-card {
+    width:  60%;
+    margin: 25px auto;
+}
+
+.formField {
+    display: flex;
+    flex-direction: column;
+}
+
+.questionInput {
+    height: 100px;
+}
+
+.askLogo {
+    display: block;
+    margin: 25px auto;
+}
+
+.logoContainer {
+    text-align: center;
+}
+
+.scrollContainer {
+    margin-top: 150px;
+    justify-content: center;
+    text-align: center;
+}
+
+.questionContainer {
+    margin-top: 100vh;
+    padding-bottom: 100vh;
+}

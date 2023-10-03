@@ -1,9 +1,60 @@
-<form #f="ngForm" (ngSubmit)="submitQuestion(f)">
-  <input type="text" name="name" placeholder="Name" ngModel />
-  <br />
-  <input type="email" name="email" placeholder="E-mail" ngModel />
-  <br />
-  <input type="text" name="question" placeholder="Question" ngModel />
-  <br />
-  <button type="submit">Submit</button>
-</form>
+<div class="logoContainer" id="topContainer">
+  <img class="askLogo" src="../assets/ask.png" />
+</div>
+
+<mat-card>
+  <mat-card-header>
+    <h3>Ask me a question!</h3>
+  </mat-card-header>
+  <mat-card-content class="formField">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        [(ngModel)]="userName"
+        matInput
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>E-mail Address</mat-label>
+      <input
+        [(ngModel)]="userEmail"
+        matInput
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Question</mat-label>
+      <textarea
+        [(ngModel)]="userQuestion"
+        matInput
+        [ngModelOptions]="{ standalone: true }"
+        class="questionInput"
+      ></textarea>
+    </mat-form-field>
+  </mat-card-content>
+  <button mat-button (click)="submitQuestion()">Submit</button>
+</mat-card>
+
+<div class="scrollContainer">
+  <button mat-button (click)="scrollDown()">See Questions</button>
+</div>
+
+<div class="questionContainer" id="qContainer">
+  <div *ngIf="questionArray.length > 0; else emptyList">
+    <mat-card *ngFor="let item of questionArray">
+      <mat-card-header>{{ item.name }}</mat-card-header>
+      <mat-card-content>
+        {{ item.timestamp }}
+        <br />
+        {{ item.question }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <ng-template #emptyList>
+    <div>
+      <h3>There's nothing here!</h3>
+    </div>
+  </ng-template>
+</div>
