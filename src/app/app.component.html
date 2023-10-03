@@ -36,8 +36,14 @@
         ></textarea>
       </mat-form-field>
     </mat-card-content>
-    <button mat-button (click)="submitQuestion()">Submit</button>
+    <button mat-button (click)="submitQuestion()" class="submitBtn">
+      Submit
+    </button>
   </mat-card>
+
+  <div class="feedbackContainer">
+    <h3>{{ feedbackMsg }}</h3>
+  </div>
 
   <div class="scrollContainer">
     <button mat-button (click)="scrollDown()">See Questions</button>

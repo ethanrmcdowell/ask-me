@@ -38,7 +38,23 @@ mat-card {
     left: 2px;
 }
 
+.adminLink:hover {
+    color: #E55604;
+}
+
 .adminForm {
     display: flex;
     flex-direction: column;
+}
+
+.submitBtn {
+    margin-bottom: 10px;
+    width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feedbackContainer {
+    height: 25px;
+    text-align: center;
 }

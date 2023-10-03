@@ -13,12 +13,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import * as firebase from 'firebase/app';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

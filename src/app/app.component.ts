@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore, collection, addDoc, collectionData, query, getDocs, }  from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
+import { DbService } from './db.service';
 
 
 
@@ -10,7 +11,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private firestore: Firestore, private authService: AuthService) {
+  constructor(private firestore: Firestore, private authService: AuthService,  private dbService: DbService) {
     this.getQuestions();
   }
 
@@ -25,6 +26,7 @@ export class AppComponent {
   error: boolean = false;
   errorMsg: string = '';
   userAuthenticated: boolean = false;
+  feedbackMsg: string = '';
 
   ngOnInit() {
     this.authService.userAuthenticated$.subscribe(isAuthenticated => {
@@ -44,12 +46,17 @@ export class AppComponent {
       timestamp: this.getDate(),
     }
 
-    const collectionInstance = collection(this.firestore, 'questions');
-    addDoc(collectionInstance, formData).then(() => {
-      console.log('Data successfully saved!');
-    })
-    .catch((error) => {
+    this.dbService.submitQuestion(formData).then(res => {
+      this.feedbackMsg = "Success!";
+      setTimeout(() => {
+        this.feedbackMsg = '';
+      }, 5000);
+    }).catch(error => {
       console.error(error);
+      this.feedbackMsg = "Error!";
+      setTimeout(() => {
+        this.feedbackMsg = '';
+      }, 5000);
     })
   }
 
@@ -59,13 +66,12 @@ export class AppComponent {
   }
 
   async getQuestions() {
-    const q = query(collection(this.firestore, 'questions'));
-    const  querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      this.questionArray.push(doc.data());
+    this.dbService.getQuestions().then(questions => {
+      this.questionArray = questions;
+      console.log("questions fetched ->", this.questionArray);
+    }).catch(error => {
+      console.error(error);
     });
-    console.log("QUESTIONS ->", this.questionArray);
   }
 
   getDate() {
