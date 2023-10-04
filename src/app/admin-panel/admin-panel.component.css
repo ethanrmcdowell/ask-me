@@ -1,0 +1,14 @@
+mat-card {
+    width:  40%;
+    margin: 25px auto 10px auto;
+}
+
+.qTimestamp {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+textArea {
+    width: 80%;
+}

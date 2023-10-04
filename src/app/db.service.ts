@@ -18,8 +18,29 @@ export class DbService {
     return questionArray;
   }
 
+  async getAnswered() {
+    let questionArray: DocumentData[] = [];
+    const q = query(collection(this.firestore, 'answered'));
+    const  querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      questionArray.push(doc.data());
+    });
+    return questionArray;
+  }
+
   async submitQuestion(data: any) {
     const collectionInstance = collection(this.firestore, 'questions');
+    addDoc(collectionInstance, data).then(() => {
+      console.log("Success!");
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+  }
+
+  async submitAnswer(data: any) {
+    const collectionInstance = collection(this.firestore, 'answered');
     addDoc(collectionInstance, data).then(() => {
       console.log("Success!");
     })

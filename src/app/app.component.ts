@@ -40,7 +40,6 @@ export class AppComponent {
 
   submitQuestion() {
     let formData = {
-      email: this.userEmail,
       name: this.userName,
       question: this.userQuestion,
       timestamp: this.getDate(),
@@ -66,8 +65,8 @@ export class AppComponent {
   }
 
   async getQuestions() {
-    this.dbService.getQuestions().then(questions => {
-      this.questionArray = questions;
+    this.dbService.getAnswered().then(questions => {
+      this.questionArray = questions.reverse();
       console.log("questions fetched ->", this.questionArray);
     }).catch(error => {
       console.error(error);

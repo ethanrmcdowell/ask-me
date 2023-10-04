@@ -1,1 +1,20 @@
-<p>admin-panel works!</p>
+<mat-card *ngFor="let item of questionArray">
+  <mat-card-header>
+    <h3>{{ item.name }}</h3>
+    <p class="qTimestamp">{{ item.timestamp }}</p>
+  </mat-card-header>
+  <mat-card-content class="adminPanel">
+    Q: {{ item.question }}
+    <br />
+    <textarea
+      [(ngModel)]="item.response"
+      matInput
+      [ngModelOptions]="{ standalone: true }"
+      class="questionInput"
+    ></textarea>
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-button (click)="submitAnswer(item)">Submit</button>
+    <button mat-button (click)="signOutUser()">Logout</button>
+  </mat-card-footer>
+</mat-card>

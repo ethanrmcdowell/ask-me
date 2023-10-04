@@ -1,6 +1,6 @@
 mat-card {
-    width:  60%;
-    margin: 25px auto;
+    width:  40%;
+    margin: 25px auto 10px auto;
 }
 
 .formField {
@@ -57,4 +57,10 @@ mat-card {
 .feedbackContainer {
     height: 25px;
     text-align: center;
+}
+
+.qTimestamp {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
