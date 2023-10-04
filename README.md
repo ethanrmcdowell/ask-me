@@ -2,7 +2,7 @@
 
 Ask me anything! This application allows users to submit anonymous questions that can be reviewed and responded to utilizing an admin panel with authentication.
 
-[Deployed Application](https://country-data-81ef9.web.app/](https://ask-me-1b00c.web.app/)
+[Deployed Application](https://ask-me-1b00c.web.app/)
 
 ## FEATURES
 
