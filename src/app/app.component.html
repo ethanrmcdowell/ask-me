@@ -4,7 +4,7 @@
 
 <mat-icon (click)="adminToggle()" class="adminLink">lock</mat-icon>
 
-<div *ngIf="!showAdmin">
+<div *ngIf="!showAdmin" class="card-container">
   <mat-card>
     <mat-card-header>
       <h3>Ask me a question!</h3>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="scrollContainer">
-    <button mat-button (click)="scrollDown()">See Questions</button>
+    <button mat-button (click)="scrollDown()">See Responses!</button>
   </div>
 
   <div class="questionContainer" id="qContainer">

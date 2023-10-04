@@ -64,3 +64,19 @@ mat-card {
     top: 5px;
     right: 5px;
 }
+
+@media (max-width: 768px) {
+    .card-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    mat-card {
+        width: 95%;
+        margin-left: 90px;
+    }
+
+    .scrollContainer button {
+        margin-left: 170px;
+    }
+}
