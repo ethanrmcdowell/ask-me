@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, query, getDocs, DocumentData, deleteDoc, doc }  from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, query, getDocs, DocumentData, deleteDoc, doc, orderBy }  from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class DbService {
 
   async getAnswered() {
     let questionArray: DocumentData[] = [];
-    const q = query(collection(this.firestore, 'answered'));
+    const q = query(collection(this.firestore, 'answered'), orderBy('timestamp'));
     const  querySnapshot = await getDocs(q);
 
     querySnapshot.forEach((doc) => {
