@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, query, getDocs, DocumentData, }  from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, query, getDocs, DocumentData, deleteDoc, doc }  from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,10 @@ export class DbService {
     const  querySnapshot = await getDocs(q);
 
     querySnapshot.forEach((doc) => {
-      questionArray.push(doc.data());
+      let data = doc.data();
+      const id = doc.id;
+      data = { id, ...data }
+      questionArray.push(data);
     });
     return questionArray;
   }
@@ -24,7 +27,10 @@ export class DbService {
     const  querySnapshot = await getDocs(q);
 
     querySnapshot.forEach((doc) => {
-      questionArray.push(doc.data());
+      let data = doc.data();
+      const id = doc.id;
+      data = { id, ...data }
+      questionArray.push(data);
     });
     return questionArray;
   }
@@ -48,20 +54,14 @@ export class DbService {
       console.error(error);
     })
   }
+
+  deleteQuestion(id: string) {
+    const docInstance = doc(this.firestore, 'questions', id);
+    deleteDoc(docInstance).then(() => {
+        console.log("Successfully deleted!");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 }
-
-
-
-
-// loginUser(email: string, password: string, callback: (response: { success: boolean, message: any }) => void) {
-//   signInWithEmailAndPassword(this.auth, email, password)
-//   .then((userCredential) => {
-//       this.userAuthenticatedSubject.next(true);
-//       this.userEmail = userCredential.user.email;
-//       callback({  success: true, message: userCredential })
-//   })
-//   .catch((error) => {
-//       this.userAuthenticatedSubject.next(false);
-//       callback({ success: false, message: error.code })
-//   })
-// }

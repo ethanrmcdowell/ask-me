@@ -1,3 +1,5 @@
+<button mat-button (click)="signOutUser()" class="logoutBtn">Logout</button>
+
 <mat-card *ngFor="let item of questionArray">
   <mat-card-header>
     <h3>{{ item.name }}</h3>
@@ -15,6 +17,6 @@
   </mat-card-content>
   <mat-card-footer>
     <button mat-button (click)="submitAnswer(item)">Submit</button>
-    <button mat-button (click)="signOutUser()">Logout</button>
+    <button mat-button (click)="deleteQuestion(item)">Delete</button>
   </mat-card-footer>
 </mat-card>

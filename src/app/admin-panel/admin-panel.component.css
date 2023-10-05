@@ -12,3 +12,9 @@ mat-card {
 textArea {
     width: 80%;
 }
+
+.logoutBtn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}

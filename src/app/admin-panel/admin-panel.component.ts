@@ -25,11 +25,25 @@ export class AdminPanelComponent {
       timestamp: this.getDate(),
     }
 
-    this.dbService.submitAnswer(submitData).then(res => {
+    this.dbService.submitAnswer(submitData).then(async res => {
       console.log(res);
+      await this.deleteQuestion(item)
+        .then((res) => {
+          console.log(res);
+        });
     }).catch(error => {
       console.error(error);
     });
+  }
+
+  async deleteQuestion(item: any) {
+    try {
+      await this.dbService.deleteQuestion(item.id);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.getQuestions();
+    }
   }
 
   async getQuestions() {
