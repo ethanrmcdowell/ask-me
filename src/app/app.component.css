@@ -68,15 +68,17 @@ mat-card {
 @media (max-width: 768px) {
     .card-container {
         width: 100%;
-        justify-content: center;
+    }
+
+    .logoContainer {
+        width: 100%;
     }
 
     mat-card {
-        width: 95%;
-        margin-left: 90px;
+        width: 90%;
     }
 
-    .scrollContainer button {
-        margin-left: 170px;
+    .askLogo {
+        width: 70%;
     }
 }
